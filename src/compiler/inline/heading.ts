@@ -1,9 +1,9 @@
 import { IInline } from "../../types/inlineTypes";
 
-export default function Heading(text: string): IInline{
+export default function Heading(text: string, fontSize: number): IInline {
     return {
         text: text,
-        fontSize: 25, 
+        fontSize: fontSize * 1.2,
         bold: true
     }
 }

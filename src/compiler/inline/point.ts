@@ -1,8 +1,8 @@
 import { IInline } from "../../types/inlineTypes";
 
-export default function Points(text:string): IInline{
+export default function Point(text: string, fontSize: number): IInline {
     return {
         text: ` • ${text}`,
-        fontSize: 15
+        fontSize: fontSize
     }
 }

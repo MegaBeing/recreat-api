@@ -1,12 +1,14 @@
 import { IInline } from "../../types/inlineTypes";
 import { Regex, wordlyMatch } from "./utils";
 
-export default function Inline(requestArray: string[], fontSize: number): IInline[] {
+export default function Wordly(content: IInline[], fontSize: number): IInline[] {
     let wordlyConstructor: IInline[] = [];
     let regexArray = Object.values(Regex);
     let regex = new RegExp(regexArray.join('|'), 'g');
-    requestArray.forEach((ele) => {
-        let str = ele;
+
+    content.forEach((ele) => {
+        let constructor: IInline[] = [];
+        let str = ele.text;
         let m;
         while ((m = regex.exec(str as string)) !== null) {
             if (m.index === regex.lastIndex) {
@@ -15,10 +17,13 @@ export default function Inline(requestArray: string[], fontSize: number): IInlin
             m.forEach((match) => {
                 let Match = wordlyMatch(match, fontSize)
                 if (Match) {
-                    wordlyConstructor.push(Match)
+                    constructor.push(Match)
                 }
             });
         }
+        wordlyConstructor.push({
+            text: constructor
+        })
     })
     return (
         wordlyConstructor

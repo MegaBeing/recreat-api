@@ -1,23 +1,22 @@
-// Import the express in typescript file
+
 import express from 'express';
+import Compiler from './src/compiler';
 
-// Initialize the express engine
 const app: express.Application = express();
-
-// Take a port 3000 for running server.
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true }));
 const port: number = 3000;
 
-// Handling '/' Request
 app.get('/', (req, res) => {
 	res.send('<h1>Recreate API</h1>')
 })
-app.get('/compile/', (req, res) => {
+app.post('/compile/', (req, res) => {
 	const body = req.body;
-	
-	res.send("TypeScript With Express");
+	const responseBody = Compiler(body);
+	res.json(responseBody);
 });
 
-// Server setup
+"TypeScript With Express"
 app.listen(port, () => {
 	console.log(`TypeScript with Express 
 		http://localhost:${port}/`);
