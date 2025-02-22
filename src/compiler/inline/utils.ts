@@ -3,8 +3,8 @@ import Heading from "./heading";
 import Point from "./point";
 
 export const Regex = {
-    heading: "^#\\s+.+",
-    point: "^\\*\\s+.+",
+    heading: "#\\s+.+",
+    point: "\\*\\s+.+",
 };
 
 export const functionServer: Record<string, (match: string, fontSize: number) => IInline | null> = {
@@ -12,7 +12,7 @@ export const functionServer: Record<string, (match: string, fontSize: number) =>
     point: Point
 };
 
-export function wordlyMatch(match: string, fontSize: number): IInline | null {
+export function inlineMatch(match: string, fontSize: number): IInline | null {
     let wordKey: string[] = Object.keys(functionServer)
         .filter((key: string) =>
             key in Regex && new RegExp(Regex[key as keyof typeof Regex]).test(match)
@@ -23,6 +23,7 @@ export function wordlyMatch(match: string, fontSize: number): IInline | null {
     }
 
     return {
-        text: match
+        text: match,
+        fontSize: fontSize
     }
 }

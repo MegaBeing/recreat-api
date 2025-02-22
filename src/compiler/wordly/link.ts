@@ -1,7 +1,7 @@
 import { IInline } from "../../types/inlineTypes";
 
 export default function Link(match: string, fontSize: number): IInline | null {
-    const regex = /\[(.*)\]\((\w+)\)/
+    const regex = /\[(.+)\]\((\w+)\)/
     const regexObject = regex.exec(match)
     if (regexObject) {
         return {

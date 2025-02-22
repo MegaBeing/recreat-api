@@ -1,5 +1,5 @@
 import { IInline } from "../../types/inlineTypes";
-import { Regex, wordlyMatch } from "./utils";
+import { Regex, inlineMatch } from "./utils";
 
 export default function Inline(requestArray: string[], fontSize: number): IInline[] {
     let wordlyConstructor: IInline[] = [];
@@ -12,12 +12,10 @@ export default function Inline(requestArray: string[], fontSize: number): IInlin
             if (m.index === regex.lastIndex) {
                 regex.lastIndex++;
             }
-            m.forEach((match) => {
-                let Match = wordlyMatch(match, fontSize)
-                if (Match) {
-                    wordlyConstructor.push(Match)
-                }
-            });
+            let Match = inlineMatch(m[0], fontSize)
+            if (Match) {
+                wordlyConstructor.push(Match)
+            }
         }
     })
     return (

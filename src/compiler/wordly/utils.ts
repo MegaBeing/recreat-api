@@ -11,9 +11,8 @@ export const Regex: Record<string, string> = {
     'strikeThrough': '=.+=',
     'underline': '__.+__',
     'italic': '_.+_',
-    'normal': '\\w+',
 };
-
+export const normal = '([A-Za-z]+(?:\\s+[A-Za-z]+)*)'
 export const functionServer: Record<string, (match: string, fontSize: number) => IInline | null> = {
     link: Link,
     bold: Bold,
@@ -28,7 +27,7 @@ export function wordlyMatch(match: string, fontSize: number): IInline | null {
             key in Regex && new RegExp(Regex[key as keyof typeof Regex]).test(match)
         );
 
-    if (wordKey.length > 0 && wordKey[0] != 'normal') {
+    if (wordKey.length > 0) {
         return functionServer[wordKey[0]](match, fontSize);
     }
 
