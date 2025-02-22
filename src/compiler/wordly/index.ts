@@ -19,7 +19,7 @@ export default function Wordly(content: IInline[], fontSize: number): IInline[] 
             console.log(m)
             let Match = wordlyMatch(m[0], ele.fontSize ? ele.fontSize : fontSize)
             if (Match) {
-                constructor.push(Match)
+                constructor.push({ ...Match, text: ` ${Match.text} ` })
             }
         }
         wordlyConstructor.push({
