@@ -5,8 +5,7 @@ export default function Wordly(content: IInline[], fontSize: number): IInline[] 
     let wordlyConstructor: IInline[] = [];
     let markDown = Object.values(Regex).join('|')
     let regex = new RegExp(`(?:${markDown})|${normal}`, 'g')
-    console.log(regex)
-    content.forEach((ele) => {
+   content.forEach((ele) => {
         let constructor: IInline[] = [];
         let str = ele.text;
         let m;

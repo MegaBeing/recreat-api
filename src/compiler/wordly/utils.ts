@@ -12,7 +12,7 @@ export const Regex: Record<string, string> = {
     'underline': '__.+__',
     'italic': '/.+/',
 };
-export const normal = '([A-Za-z]+(?:\\s+[A-Za-z]+)*)'
+export const normal = '([A-Za-z]+(?:\\s+[A-Za-z]+)*)|(•\\s+[A-Za-z]+(?:\\s+[A-Za-z]+)*)'
 export const functionServer: Record<string, (match: string, fontSize: number) => IInline | null> = {
     link: Link,
     bold: Bold,
