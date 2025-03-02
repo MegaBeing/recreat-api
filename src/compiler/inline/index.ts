@@ -1,10 +1,11 @@
 import { IInline } from "../../types/inlineTypes";
-import { Regex, inlineMatch } from "./utils";
+import { Regex, inlineMatch, normal } from "./utils";
 
 export default function Inline(requestArray: string[], fontSize: number): IInline[] {
     let wordlyConstructor: IInline[] = [];
     let regexArray = Object.values(Regex);
-    let regex = new RegExp(regexArray.join('|'), 'g');
+    let markDown = regexArray.join('|');
+    let regex = new RegExp(`(?:${markDown})|${normal}`, 'g')
     requestArray.forEach((ele) => {
         let str = ele;
         let m;

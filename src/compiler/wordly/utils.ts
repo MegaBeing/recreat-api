@@ -6,11 +6,11 @@ import StrikeThrough from "./strikeThrough";
 import Underline from "./underline";
 
 export const Regex: Record<string, string> = {
-    'link': '\\[.+\\]\\(\\w+\\)',
+    'link': '\\[.+\\]\\(.+\\)',
     'bold': '\\*\\*.+\\*\\*',
     'strikeThrough': '=.+=',
     'underline': '__.+__',
-    'italic': '_.+_',
+    'italic': '/.+/',
 };
 export const normal = '([A-Za-z]+(?:\\s+[A-Za-z]+)*)'
 export const functionServer: Record<string, (match: string, fontSize: number) => IInline | null> = {

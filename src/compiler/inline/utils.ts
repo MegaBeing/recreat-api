@@ -11,7 +11,7 @@ export const functionServer: Record<string, (match: string, fontSize: number) =>
     heading: Heading,
     point: Point
 };
-
+export const normal = '(.+)'
 export function inlineMatch(match: string, fontSize: number): IInline | null {
     let wordKey: string[] = Object.keys(functionServer)
         .filter((key: string) =>
