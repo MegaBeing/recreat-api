@@ -1,9 +1,10 @@
 
 import express from 'express';
 import Compiler from './src/compiler';
-
+const cors = require('cors')
 const app: express.Application = express();
-app.use(express.json()); 
+app.use(cors())
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const port: number = 3000;
 
