@@ -9,8 +9,8 @@ const port = config.PORT
 
 const corsOptions = {
 	origin: (origin: string | undefined, callback: (error: Error | null, allow?: boolean) => void) => {
+		console.log('origin', origin || "")
 		if (!origin || allowedOrigins.includes(origin)) {
-			console.log(origin)
 			callback(null, true); // Allow the request
 		} else {
 			callback(new Error('Not allowed by CORS')); // Reject the request
