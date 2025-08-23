@@ -3,24 +3,24 @@ import express from 'express';
 import Compiler from './compiler';
 import { allowedOrigins, config } from './config'
 
-const cors = require('cors')
+// const cors = require('cors')
 const app: express.Application = express();
 const port = config.PORT
 
-const corsOptions = {
-	origin: (origin: string | undefined, callback: (error: Error | null, allow?: boolean) => void) => {
-		console.log('origin', origin || "")
-		if (!origin || allowedOrigins.includes(origin)) {
-			callback(null, true); // Allow the request
-		} else {
-			callback(new Error('Not allowed by CORS')); // Reject the request
-		}
-	},
-	methods: 'GET,POST,PUT,DELETE', // Allowed HTTP methods
-	credentials: true, // Allow cookies and authentication headers
-};
+// const corsOptions = {
+// 	origin: (origin: string | undefined, callback: (error: Error | null, allow?: boolean) => void) => {
+// 		console.log('origin', origin || "")
+// 		if (!origin || allowedOrigins.includes(origin)) {
+// 			callback(null, true); // Allow the request
+// 		} else {
+// 			callback(new Error('Not allowed by CORS')); // Reject the request
+// 		}
+// 	},
+// 	methods: 'GET,POST,PUT,DELETE', // Allowed HTTP methods
+// 	credentials: true, // Allow cookies and authentication headers
+// };
 
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
